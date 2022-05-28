@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/NES Kung Fu Man 4way/NES Kung Fu Man Idle Sheets/Kung_Fu_Man_SpriteSheet_Idle_4way.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -20,6 +20,35 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "idle_left"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 9, 10, 11 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionIdleLeft:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "idle_right"
 length = 0.4
@@ -36,6 +65,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16, 17, 18, 19 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CollisionIdleRight:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="Player" type="Area2D"]
 script = ExtResource( 2 )
@@ -48,11 +89,16 @@ scale = Vector2( 10, 10 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 5
-frame = 16
+frame = 11
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[node name="CollisionIdleRight" type="CollisionPolygon2D" parent="."]
 scale = Vector2( 1, 1 )
+polygon = PoolVector2Array( -20, -100, 20, -100, 20, -90, 30, -90, 30, -30, 20, -30, 20, -20, 30, -20, 30, 10, 40, 10, 40, 30, 30, 30, 30, 40, 20, 40, 20, 90, 30, 90, 30, 110, -20, 110, -20, 60, -30, 60, -30, -90 )
+
+[node name="CollisionIdleLeft" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -30, -90, -20, -90, -20, -100, 20, -100, 20, -90, 30, -90, 30, 60, 20, 60, 20, 110, -30, 110, -30, 90, -20, 90, -20, 50, -30, 50, -30, 40, -40, 40, -40, 20, -30, 20, -30, -20, -20, -20, -20, -30, -30, -30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle_forward = SubResource( 1 )
+anims/idle_left = SubResource( 3 )
 anims/idle_right = SubResource( 2 )

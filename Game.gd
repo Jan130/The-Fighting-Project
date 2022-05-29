@@ -18,6 +18,8 @@ func _input(event):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var player_velocity = Vector2.ZERO
-	if screen_touched:
+	if Input.is_action_pressed("UiRight"):
 		player_velocity.x += 1
+	if Input.is_action_pressed("UiLeft"):
+		player_velocity.x -= 1
 	player.move(player_velocity, delta)

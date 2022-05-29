@@ -1,10 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Game.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.125683, 0.31694, 0.486339, 0.759563, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.121447, 0.121447, 0.121447, 1, 0.306257, 0.306257, 0.306257, 1, 0.469945, 0.469945, 0.469945, 1, 0.954889, 0.954889, 0.954889, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 497, 273 )
+
+[node name="ButtonRight" type="TouchScreenButton" parent="."]
+position = Vector2( 176, 456 )
+scale = Vector2( 0.0527344, 117 )
+normal = SubResource( 2 )
+action = "UiRight"
+
+[node name="ButtonLeft" type="TouchScreenButton" parent="."]
+position = Vector2( 28, 458 )
+scale = Vector2( 0.0566406, 114 )
+normal = SubResource( 2 )
+action = "UiLeft"

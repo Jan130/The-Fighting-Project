@@ -34,15 +34,27 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11 ]
+"values": [ 4, 5, 6, 7 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionIdleLeft:disabled")
+tracks/1/path = NodePath("CollisionIdle:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionIdle:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -63,10 +75,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 16, 17, 18, 19 ]
+"values": [ 0, 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CollisionIdleRight:disabled")
+tracks/1/path = NodePath("CollisionIdle:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -76,6 +88,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionIdle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [node name="Player" type="Area2D"]
@@ -93,7 +117,6 @@ vframes = 5
 frame = 11
 
 [node name="CollisionIdleRight" type="CollisionPolygon2D" parent="."]
-scale = Vector2( 1, 1 )
 polygon = PoolVector2Array( -20, -100, 20, -100, 20, -90, 30, -90, 30, -30, 20, -30, 20, -20, 30, -20, 30, 10, 40, 10, 40, 30, 30, 30, 30, 40, 20, 40, 20, 90, 30, 90, 30, 110, -20, 110, -20, 60, -30, 60, -30, -90 )
 
 [node name="CollisionIdleLeft" type="CollisionPolygon2D" parent="."]

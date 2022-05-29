@@ -6,6 +6,7 @@ var screen_size
 
 var screen_touched = false
 var lastTouch
+var direction = "right"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

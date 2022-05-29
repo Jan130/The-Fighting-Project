@@ -4,6 +4,7 @@ export var speed = 200
 
 var screen_size
 var previous_velocity
+var direction_facing
 
 onready var _animation_player = $AnimationPlayer
 
@@ -19,6 +20,7 @@ onready var _collision_walk = $CollisionWalk
 func _ready():
 	screen_size = get_viewport_rect().size
 	previous_velocity = Vector2.ZERO
+	direction_facing = "right"
 	set_animation("idle_right")
 
 
@@ -76,11 +78,16 @@ func set_animation(name : String):
 func move(velocity : Vector2, delta):
 	if velocity != previous_velocity:
 		if velocity.x == 0:
-			pass
+			if direction_facing == "right":
+				set_animation("idle_right")
+			else:
+				set_animation("idle_left")
 		elif velocity.x > 0:
 			set_animation("walk_right")
+			direction_facing = "right"
 		else:
 			set_animation("walk_left")
+			direction_facing = "left"
 		previous_velocity = velocity
 	
 	position += velocity * delta * speed
@@ -88,10 +95,25 @@ func move(velocity : Vector2, delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 func punch():
-	print("punch")
+	if direction_facing == "right":
+		set_animation("punch_right")
+		_animation_player.queue("idle_right")
+	else:
+		set_animation("punch_left")
+		_animation_player.queue("idle_left")
 
 func kick():
-	print("kick")
+	if direction_facing == "right":
+		set_animation("kick_right")
+		_animation_player.queue("idle_right")
+	else:
+		set_animation("kick_left")
+		_animation_player.queue("idle_left")
 
 func jump():
-	print("jump")
+	if direction_facing == "right":
+		set_animation("jump_right")
+		_animation_player.queue("idle_right")
+	else:
+		set_animation("jump_left")
+		_animation_player.queue("idle_left")

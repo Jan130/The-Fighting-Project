@@ -39,6 +39,18 @@ UiLeft={
 "deadzone": 0.5,
 "events": [  ]
 }
+UiUp={
+"deadzone": 0.5,
+"events": [  ]
+}
+UiPunch={
+"deadzone": 0.5,
+"events": [  ]
+}
+UiKick={
+"deadzone": 0.5,
+"events": [  ]
+}
 
 [input_devices]
 

@@ -45,3 +45,12 @@ func move(velocity : Vector2, delta):
 	position += velocity * delta * speed
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
+
+func punch():
+	print("punch")
+
+func kick():
+	print("kick")
+
+func jump():
+	print("jump")

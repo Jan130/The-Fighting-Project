@@ -23,9 +23,15 @@ func _input(event):
 func _process(delta):
 	var player_velocity = Vector2.ZERO
 	
-	if screen_touched:
-		if lastTouch.x > screen_size.x / 2:
-			player_velocity.x += 1
-		else:
-			player_velocity.x -= 1
+	if Input.is_action_pressed("UiRight"):
+		player_velocity.x += 1
+	if Input.is_action_pressed("UiLeft"):
+		player_velocity.x -= 1
+	if Input.is_action_just_pressed("UiUp"):
+		player.jump()
+	if Input.is_action_just_pressed("UiKick"):
+		player.kick()
+	if Input.is_action_just_pressed("UiPunch"):
+		player.punch()
+		
 	player.move(player_velocity, delta)

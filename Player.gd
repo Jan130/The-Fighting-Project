@@ -42,7 +42,7 @@ func set_animation(name : String):
 	elif name == "idle_left":
 		disable_collisions()
 		_animation_player.play("idle_left")
-  elif name == "kick_right":
+	elif name == "kick_right":
 		disable_collisions()
 		_animation_player.play("kick_right")
 	elif name == "kick_left":
@@ -78,9 +78,9 @@ func move(velocity : Vector2, delta):
 		if velocity.x == 0:
 			pass
 		elif velocity.x > 0:
-			set_animation("idle_right")
+			set_animation("walk_right")
 		else:
-			set_animation("idle_left")
+			set_animation("walk_left")
 		previous_velocity = velocity
 	
 	position += velocity * delta * speed
